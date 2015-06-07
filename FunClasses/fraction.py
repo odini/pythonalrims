@@ -2,35 +2,38 @@
 class Fraction:
 
     def __init__(self,top,bottom):
-        self.num = top
-        self.den = bottom
+        common = gcd(top,bottom)
+        self.num = top//common
+        self.den = bottom//common
 
     def __str__(self):
         return str(self.num)+'/'+str(self.den)
 
+    def getNum(self):
+        return self.num
+
+    def getDen(self):
+        return self.den
+
     def __add__(self,otherfraction):
         newnum = self.num * otherfraction.den + self.den * otherfraction.num
         newden = self.den * otherfraction.den
-        common = gcd(newnum,newden)
-        return Fraction(newnum//common,newden//common)
+        return Fraction(newnum,newden)
 
     def __sub__(self,otherfraction):
         newnum = self.num * otherfraction.den - self.den * otherfraction.num
         newden = self.den * otherfraction.den
-        common = gcd(newnum,newden)
-        return Fraction(newnum//common,newden//common)
+        return Fraction(newnum,newden)
 
     def __mul__(self,otherfraction):
         newnum = self.num * otherfraction.num
         newden = self.den * otherfraction.den
-        common = gcd(newnum,newden)
-        return Fraction(newnum//common,newden//common)
+        return Fraction(newnum,newden)
 
-    def __div__(self,otherfraction):
+    def __truediv__(self,otherfraction):
         newnum = self.num * otherfraction.den
         newden = self.den * otherfraction.num
-        common = gcd(self,otherfraction)
-        return Fraction(newnum//common,newden//common)
+        return Fraction(newnum,newden)
 
     def __eq__(self,otherfraction):
         firstnum = self.num * otherfraction.den
