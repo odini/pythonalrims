@@ -2,9 +2,12 @@
 class Fraction:
 
     def __init__(self,top,bottom):
-        common = gcd(top,bottom)
-        self.num = top//common
-        self.den = bottom//common
+        if isinstance(top,int) and isinstance(bottom,int):
+            common = gcd(top,bottom)
+            self.num = top//common
+            self.den = bottom//common
+        else:
+            raise RuntimeError("Numerator or denominator is not a valid integer")
 
     def __str__(self):
         return str(self.num)+'/'+str(self.den)
@@ -40,17 +43,30 @@ class Fraction:
         secondnum = self.den * otherfraction.num
         return (firstnum == secondnum)
 
+    def __ne__(self,otherfraction):
+        firstnum = self.num * otherfraction.den
+        secondnum = self.den * otherfraction.num
+        return (firstnum != secondnum)
+
     def __lt__(self,otherfraction):
         firstnum = self.num * otherfraction.den
         secondnum = self.den * otherfraction.num
         return (firstnum < secondnum)
+
+    def __le__(self,otherfraction):
+        firstnum = self.num * otherfraction.den
+        secondnum = self.den * otherfraction.num
+        return (firstnum <= secondnum)
 
     def __gt__(self,otherfraction):
         firstnum = self.num * otherfraction.den
         secondnum = self.den * otherfraction.num
         return (firstnum > secondnum)
 
-
+    def __ge__(self,otherfraction):
+        firstnum = self.num * otherfraction.den
+        secondnum = self.den * otherfraction.num
+        return (firstnum >= secondnum)
 
 def gcd(m,n):
     while m%n != 0:
