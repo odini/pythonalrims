@@ -1,16 +1,17 @@
-#Balanced paranthesis
+#Balanced paranthesis including (),[],{}
 def balance(s):
-    balanced = False
+    opening = set('({[')
+    match = [('(',')'),('{','}'),('[',']')]
     res = []
     for i in s:
-        if i == '(':
+        if i in opening:
             res.append(i)
         else:
-            if not res:
+            if not len(res):
                 return False
-            else:
-                res.pop()
-    if not res: balanced = True
-    return balanced
+            last = res.pop()
+            if (last,i) not in match:
+                return False
+    return len(res) == 0
 
 print balance('(()())')

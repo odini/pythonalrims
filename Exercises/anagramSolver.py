@@ -1,5 +1,5 @@
 #! /usr/bin/python
-
+from collections import defaultdict
 # This function will use count and compare method to check if two strings are anagrams
 
 def anagramSolver(s1,s2):
@@ -24,3 +24,19 @@ def anagramSolver(s1,s2):
             match = False
     print c1,c2
     return match
+
+# Using dictionaries
+def anagrams(s1,s2):
+    if len(s1) != len(s2):
+        return False
+    ang = defaultdict(int)
+    for i in s1.lower():
+        ang[i] += 1
+
+    for i in s2.lower():
+        ang[i] -= 1
+        if ang[i] < 0:
+            return False
+    return True
+
+print anagrams('Odia','odin')
