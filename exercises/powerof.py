@@ -1,10 +1,10 @@
 # Find if a number is a power of other number
 
-def powerof(num,x):
+def power_of(num, x):
     while num != 1:
         if num % x:
             return False
         num /= x
     return True
 
-print powerof(27,3)
+print power_of(27,3)

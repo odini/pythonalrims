@@ -1,33 +1,33 @@
 from timedecorator import *
 
 @timedecorator
-def pairsum(lst,k):
-    if len(lst) < 2:
+def pair_sum(seq,k):
+    if len(seq) < 2:
         return "List has less than a pair of elements"
-    lst.sort()
-    L, R = 0, len(lst)-1
+    seq.sort()
+    L, R = 0, len(seq)-1
     while L < R:
-        if (lst[L]+lst[R]) == k:
-            print (lst[L],lst[R])
+        if (seq[L] + seq[R]) == k:
+            print (seq[L], seq[R])
             L += 1
-        elif (lst[L]+lst[R]) < k:
+        elif (seq[L] + seq[R]) < k:
             L += 1
         else:
             R -= 1
 
 # Implement using dict
-def pairsumd(lst,k):
+def pair_sumd(seq,k):
     match = {}
-    for i in range(len(lst)):
-        if not lst[i] in match.keys():
-            match[lst[i]] = [i]
+    for index in range(len(seq)):
+        if seq[index] not in match.keys():
+            match[seq[index]] = [index]
         else:
-            match[lst[i]].append(i)
-        if k - lst[i] in match.keys():
-            print lst[i],k-lst[i]
+            match[seq[index]].append(index)
+        if (k - seq[index]) in match.keys():
+            print seq[index], k-seq[index]
 
     return match
 
 # l = random.sample(xrange(100*100),50*50)
 l = [1,1,2,4,6,8,9,9,10]
-print pairsumd(l,10)
+print pair_sumd(l,10)

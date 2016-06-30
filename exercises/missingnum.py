@@ -9,9 +9,7 @@ def findMissing1(lst1,lst2):
 # Implementing using XORing trick. Complexity is O(n)
 def findMissing2(lst1,lst2):
     result = 0
-    print lst1+lst2
     for i in lst1+lst2:
-        print result
         result ^= i
     return result
 

@@ -17,8 +17,5 @@ def is_prime(n):
     while i <= int(n**0.5):
         if n % i == 0: return False
         if n % (i+2) == 0: return False
-        print i
         i += 6
     return True
-
-print is_prime.__doc__

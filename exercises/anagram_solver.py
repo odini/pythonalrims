@@ -8,7 +8,7 @@ def anagrams(s1,s2):
     ang = defaultdict(int)
     for i in s1.lower():
         ang[i] += 1
-        
+
     for i in s2.lower():
         ang[i] -= 1
         if ang[i] < 0:
